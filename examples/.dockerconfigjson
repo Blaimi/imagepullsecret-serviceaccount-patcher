@@ -1,0 +1,9 @@
+{
+  "auths": {
+    "docker.io": {
+      "username": "foo",
+      "password": "bar",
+      "auth": "Zm9vOmJhcgo="
+    }
+  }
+}
