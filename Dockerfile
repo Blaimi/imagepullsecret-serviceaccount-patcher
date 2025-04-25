@@ -1,8 +1,8 @@
-FROM docker.io/library/golang:1.24.2
+FROM docker.io/library/golang:1.24.2 AS builder
 WORKDIR /src
 COPY ./ /src
-RUN GOOS=linux go build -o ./dist/app .
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./dist/app .
 
-FROM docker.io/library/debian
-COPY --from=0 /src/dist/app /app
+FROM scratch AS runtime
+COPY --from=builder /src/dist/app /app
 ENTRYPOINT /app
