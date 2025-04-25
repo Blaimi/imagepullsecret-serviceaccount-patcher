@@ -8,6 +8,7 @@ jobs:
   image-name:
     name: Image Name
     runs-on: ubuntu-latest
+    permissions: {}
     outputs:
       image-name: ${{ steps.image-name.outputs.image-name }}
     steps:
