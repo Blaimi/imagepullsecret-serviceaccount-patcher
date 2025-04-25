@@ -16,25 +16,12 @@ which, however, only allows to add one private container registry secret to the 
 It is at best used in conjunction with [mittwald/kubernetes-replicator](https://github.com/mittwald/kubernetes-replicator).
 Thus this is the complete approach:
 
-1. Install [mittwald/kubernetes-replicator](https://github.com/mittwald/kubernetes-replicator)
-2. Create container registry secrets in the `kube-system` namespace
+Edit the files in [./examples](examples) to your needs
 ```bash
-kubectl -n kube-system create secret docker-registry <SECRET_NAME_1> --docker-server=<registry.server.de> --docker-username=<username> --docker-password=<password>
-kubectl -n kube-system create secret docker-registry <SECRET_NAME_2> --docker-server=<registry.server.de> --docker-username=<username> --docker-password=<password>
-```
-3. Patch secrets to make them replicable by [mittwald/kubernetes-replicator](https://github.com/mittwald/kubernetes-replicator)
-```bash
-kubectl -n kube-system patch secret <SECRET_NAME_1> -p '{"metadata": {"annotations": {"replicator.v1.mittwald.de/replicate-to": ".*"}}}'
-kubectl -n kube-system patch secret <SECRET_NAME_2> -p '{"metadata": {"annotations": {"replicator.v1.mittwald.de/replicate-to": ".*"}}}'
-```
-4. Add your secrets' names to the `REGISTRY_SECRET_NAMES` environment variable in `deployment/deployment.yaml`. 
-5. Install neutryno/serviceaccount-patcher
-```bash
-kubectl apply -f https://raw.githubusercontent.com/neutryno/imagepullsecret-serviceaccount-patcher/master/deployment/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/neutryno/imagepullsecret-serviceaccount-patcher/master/deployment/deployment.yaml
+kubectl apply -k examples
 ```
 
 ## Build
 ```bash
-docker buildx build . -t neutryno/imagepullsecret-serviceaccount-patcher --platform linux/amd64,linux/arm64 --no-cache
+docker buildx build . -t ghcr.io/blaimi/imagepullsecret-serviceaccount-patcher:local-dev --platform linux/amd64,linux/arm64 --no-cache
 ```
