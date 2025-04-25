@@ -23,7 +23,7 @@ spec:
       containers:
       - name: imagepullsecret-serviceaccount-patcher
         securityContext: {}
-        image: neutryno/imagepullsecret-serviceaccount-patcher:latest
+        image: ghcr.io/blaimi/imagepullsecret-serviceaccount-patcher:latest
         imagePullPolicy: IfNotPresent
         args: []
         env:
