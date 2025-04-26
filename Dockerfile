@@ -6,8 +6,8 @@ COPY go.sum ./
 RUN go mod download
 
 COPY ./ /src
-RUN CGO_ENABLED=0 GOOS=linux go build -o ./dist/app .
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./dist/ips-sa-p .
 
 FROM scratch AS runtime
-COPY --from=builder /src/dist/app /app
-ENTRYPOINT /app
+COPY --from=builder /src/dist/ips-sa-p /ips-sa-p
+ENTRYPOINT [ "/ips-sa-p" ]
