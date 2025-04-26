@@ -13,5 +13,10 @@
 
 Dockerfile
 deployment/
+examples/
+.git*
 .idea/
 *.iml
+README.md
+LICENSE
+.releaserc.json
