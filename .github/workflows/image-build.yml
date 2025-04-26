@@ -42,6 +42,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha
+            type=raw,value=latest,filter=^refs/heads/${{ github.event.repository.default_branch }}$
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
