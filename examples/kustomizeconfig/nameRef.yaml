@@ -1,0 +1,9 @@
+nameReference:
+  - kind: Secret
+    version: v1
+    # this is OK, because there is only one env variable which should contain the name of the secret
+    # I couldn't find a way to restrict this to a specific env variable
+    fieldSpecs:
+      - path: /spec/template/spec/containers/env/value
+        version: v1
+        kind: Deployment
