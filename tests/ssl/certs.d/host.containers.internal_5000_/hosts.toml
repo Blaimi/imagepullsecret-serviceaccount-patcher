@@ -1,0 +1,4 @@
+server = "https://host.containers.internal:5000"
+
+[host."https://host.containers.internal:5000"]
+ca = "/etc/containerd/certs.d/host.containers.internal:5000/registry.crt"
