@@ -2,3 +2,5 @@ name: Test in podman-kind
 runs:
   using: docker
   image: Dockerfile
+
+# TODO: get the image to test via parameter and pass it to the entrypoint which then needs to ajust the kustomize-image
