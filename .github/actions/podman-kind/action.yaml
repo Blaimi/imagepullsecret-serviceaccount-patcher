@@ -1,0 +1,4 @@
+name: Test in podman-kind
+runs:
+  using: docker
+  image: Dockerfile
