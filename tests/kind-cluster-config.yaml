@@ -18,7 +18,7 @@ nodes:
     protocol: TCP
   extraMounts:
   - containerPath: "/etc/containerd/certs.d/"
-    hostPath: /home/mabl1/workspace/neutryno/imagepullsecret-serviceaccount-patcher/ssl/certs.d
+    hostPath: $PWD/ssl/certs.d
 containerdConfigPatches:
 - |-
   [plugins."io.containerd.grpc.v1.cri".registry]

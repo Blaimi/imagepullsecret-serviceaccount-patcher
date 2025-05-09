@@ -7,4 +7,5 @@ podman run --rm -v $PWD:/workdir --workdir=/workdir docker.io/alpine/openssl req
 
 podman run --rm -v $PWD:/workdir --workdir=/workdir docker.io/alpine/openssl x509 -req -in registry.csr -signkey registry.key -out "registry.crt" -days 1 -extensions v3_req -extfile certconfig.ini
 
-mv registry.crt "certs.d/host.containers.local:5000"
+mkdir -p "certs.d/host.containers.internal_5000_"
+mv registry.crt "certs.d/host.containers.internal_5000_"

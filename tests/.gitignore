@@ -1,3 +1,4 @@
 /ssl/registry.key
 /ssl/registry.csr
 /ssl/certs.d/host.containers.internal_5000_/registry.crt
+/auth/htpasswd
