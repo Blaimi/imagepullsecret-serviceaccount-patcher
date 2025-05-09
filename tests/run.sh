@@ -2,6 +2,8 @@
 
 set -e
 
+cd tests
+
 # create the certificates
 (cd ssl; ./createcert.sh)
 
